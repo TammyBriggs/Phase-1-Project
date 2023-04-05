@@ -1,0 +1,94 @@
+{
+    "tracks": [
+      {
+        "id": "1",
+        "songName": "POPSTAR",
+        "artist": "DJ Khaled, Drake",
+        "poster": "img/1.png"
+      },
+      {
+        "id": "2",
+        "songName": "KANA",
+        "artist": "OLamide, Wizkid",
+        "poster": "img/2.png"
+      },
+      {
+        "id": "3",
+        "songName": "Angela",
+        "artist": "Boutross, Juicee Mann",
+        "poster": "img/3.png"
+      },
+      {
+        "id": "4",
+        "songName": "Nonstop",
+        "artist": "Drake",
+        "poster": "img/4.png"
+      },
+      {
+        "id": "5",
+        "songName": "Sability",
+        "artist": "Arya Starr",
+        "poster": "img/5.png"
+      },
+      {
+        "id": "6",
+        "songName": "Terminator",
+        "artist": "Asake",
+        "poster": "img/6.png"
+      },
+      {
+        "id": "7",
+        "songName": "Low Down",
+        "artist": "Lil Baby",
+        "poster": "img/7.png"
+      },
+      {
+        "id": "8",
+        "songName": "Koffee",
+        "artist": "Toast",
+        "poster": "img/8.png"
+      },
+      {
+        "id": "9",
+        "songName": "Drogba (Joanna)",
+        "artist": "Afro B, Wizkid",
+        "poster": "img/9.png"
+      },
+      {
+        "id": "10",
+        "songName": "Dimension",
+        "artist": "JAE5, Skepta, Rema",
+        "poster": "img/10.png"
+      },
+      {
+        "id": "11",
+        "songName": "Ye",
+        "artist": "Burna Boy",
+        "poster": "img/11.png"
+      },
+      {
+        "id": "12",
+        "songName": "Asiwaju",
+        "artist": "Ruger",
+        "poster": "img/12.png"
+      },
+      {
+        "id": "13",
+        "songName": "In Da Club",
+        "artist": "50 Cent",
+        "poster": "img/13.png"
+      },
+      {
+        "id": "14",
+        "songName": "soso",
+        "artist": "Omah Lay",
+        "poster": "img/14.png"
+      },
+      {
+        "id": "15",
+        "songName": "Feed The Fire",
+        "artist": "SG Lewis, Lucky Daye",
+        "poster": "img/15.png"
+      }
+    ]
+}
