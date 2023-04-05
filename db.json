@@ -36,7 +36,7 @@
         "artist": "Asake",
         "poster": "img/6.png"
       }, 
-      
+
       {
         "id": "7",
         "songName": "Low Down",
@@ -91,5 +91,57 @@
         "artist": "SG Lewis, Lucky Daye",
         "poster": "img/15.png"
       }
+    ],
+    "artists": [
+        {
+            "id": "1",
+            "image": "img/wizkid.png",
+            "title": "Wizkid"
+        },
+        {
+            "id": "2",
+            "image": "img/adele.png",
+            "title": "Adele"
+        },
+        {
+            "id": "3",
+            "image": "img/eminem.png",
+            "title": "Eminem"
+        },
+        {
+            "id": "4",
+            "image": "img/beyonce.png",
+            "title": "Beyonce"
+        },
+        {
+            "id": "5",
+            "image": "img/drake.png",
+            "title": "Drake"
+        },
+        {
+            "id": "6",
+            "image": "img/rihanna.png",
+            "title": "Rihanna"
+        },
+        {
+            "id": "7",
+            "image": "img/theweeknd.png",
+            "title": "The Weeknd"
+        },
+        {
+            "id": "8",
+            "image": "img/usher.png",
+            "title": "Usher"
+        },
+        {
+            "id": "9",
+            "image": "img/shakira.png",
+            "title": "Shakira"
+        },
+        {
+            "id": "10",
+            "image": "img/mj.png",
+            "title": "Michael Jackson"
+        }
     ]
 }

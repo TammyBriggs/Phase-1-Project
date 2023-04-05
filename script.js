@@ -26,3 +26,23 @@ fetch('db.json')
       songList.appendChild(songItem);
     });
   });
+
+  // Get the HTML element where we want to append the images and titles
+const artistList = document.getElementById('artist-list');
+
+// Fetch the data from the JSON file
+fetch('db.json')
+  .then(response => response.json()) // Convert the data into a JavaScript object
+  .then(data => {
+    // Loop through the object and append the images and titles to the HTML elements
+    data.artists.forEach(artist => {
+      const listItem = document.createElement('li');
+      const image = document.createElement('img');
+      image.src = artist.image;
+      image.alt = `Image of ${artist.title}`;
+      image.title = artist.title;
+      listItem.appendChild(image);
+      artistList.appendChild(listItem);
+    });
+  })
+  .catch(error => console.error(error));
