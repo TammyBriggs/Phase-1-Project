@@ -278,6 +278,7 @@ header .music_player .bar .bar2{
     width: 0%;
     height: 100%;
     top: 0;
+    transition: 0.3s linear;
 }
 
 header .music_player .bar .dot{
@@ -347,6 +348,7 @@ header .music_player .vol .vol_bar{
     width: 0%;
     height: 100%;
     top: 0;
+    transition: 0.3s linear;
 }
 
 header .music_player .vol .dot{

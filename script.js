@@ -164,3 +164,25 @@ let vol = document.getElementById('vol');
 let vol_dot = document.getElementById('vol_dot');
 let vol_bar = document.getElementsByClassName('vol_bar')[0];
 
+vol.addEventListener('change', ()=>{
+    if (vol.value == 0) {
+        vol_icon.classList.remove('bi-volume-down');
+        vol_icon.classList.add('bi-volume-mute');
+        vol_icon.classList.remove('bi-volume-up');
+    }
+    if (vol.value > 0) {
+        vol_icon.classList.add('bi-volume-down');
+        vol_icon.classList.remove('bi-volume-mute');
+        vol_icon.classList.remove('bi-volume-up');
+    }
+    if (vol.value > 50) {
+        vol_icon.classList.remove('bi-volume-down');
+        vol_icon.classList.remove('bi-volume-mute');
+        vol_icon.classList.add('bi-volume-up');
+    }
+
+    let vol_a = vol.value;
+    vol_bar.style.width = `${vol_a}%`;
+    vol_dot.style.left = `${vol_a}%`;
+    music.volume = vol_a/100;
+})
