@@ -1,32 +1,34 @@
-// Get the container element in which the song items in the menu bar will be appended
-const songList = document.querySelector('.menu_song');
+// //1. To Display all the songs in the menu bar
+// // Get the container element in which the song items in the menu bar will be appended
+// const songList = document.querySelector('.menu_song');
 
-// Fetch the data from the JSON file
-fetch('db.json')
-  .then(response => response.json())
-  .then(data => {
-    // Loop through the first 6 tracks and create a new song item for each track
-    data["tracks"].forEach(track => {
-      // Create a new li element for the song item
-      const songItem = document.createElement('li');
-      songItem.classList.add('songItem');
+// // Fetch the data from the JSON file
+// fetch('db.json')
+//   .then(response => response.json())
+//   .then(data => {
+//     // Loop through the first 6 tracks and create a new song item for each track
+//     data["tracks"].forEach(track => {
+//       // Create a new li element for the song item
+//       const songItem = document.createElement('li');
+//       songItem.classList.add('songItem');
 
-      // Create the HTML for the song item using the track data
-      songItem.innerHTML = `
-        <span>${track.id}</span>
-        <img src="${track.poster}" alt="Poster of ${track.songName} track">
-        <h5>
-          ${track.songName}
-          <div class="subtitle">${track.artist}</div>
-        </h5>
-        <i class="bi playListPlay bi-play" id="${track.id}"></i>
-      `;
+//       // Create the HTML for the song item using the track data
+//       songItem.innerHTML = `
+//         <span>${track.id}</span>
+//         <img src="${track.poster}" alt="Poster of ${track.songName} track">
+//         <h5>
+//           ${track.songName}
+//           <div class="subtitle">${track.artist}</div>
+//         </h5>
+//         <i class="bi playListPlay bi-play" id="${track.id}"></i>
+//       `;
 
-      // Append the new song item to the container
-      songList.appendChild(songItem);
-    });
-  });
+//       // Append the new song item to the container
+//       songList.appendChild(songItem);
+//     });
+//   });
 
+// 2. To diplay all the songs in the Popular Songs div
 // Get the parent element to which we will append the song items to the popular songs div.
 const popSongDiv = document.querySelector('.pop_song');
 
@@ -57,7 +59,7 @@ fetch('db.json')
   })
   .catch(error => console.error(error));
 
-
+//3. To display the artists in the Popular Artists div
   // Get the HTML element where we want to append the images and titles to the popular artists div
 const artistList = document.getElementById('artist-list');
 
@@ -78,7 +80,109 @@ fetch('db.json')
   })
   .catch(error => console.error(error));
 
-  let left_scroll = document.getElementById('left_scroll');
+  const songs = [
+      {
+        id: '1',
+        songName:` Angela <br>
+        <div class = "subtitle">Boutross, Juicee Mann</div>`,
+        poster: 'img/1.png'
+      },
+      {
+        id: '2',
+        songName:` KANA <br>
+        <div class = "subtitle">Olamide, Wizkid</div>`,
+        poster: 'img/2.png'
+      },
+      {
+        id: '3',
+        songName:` POPSTAR <br>
+        <div class = "subtitle">Drake</div>`,
+        poster: 'img/3.png'
+      },
+      {
+        id: '4',
+        songName:` Nonstop <br>
+        <div class = "subtitle">Drake</div>`,
+        poster: 'img/4.png'
+      },
+      {
+        id: '5',
+        songName:` Sability <br>
+        <div class = "subtitle">Arya Starr</div>`,
+        poster: 'img/5.png'
+      },
+      {
+        id: '6',
+        songName:` Terminator <br>
+        <div class = "subtitle">Asake</div>`,
+        poster: 'img/6.png'
+      } 
+]
+
+Array.from(document.getElementsByClassName('songItem')).forEach((element, i)=>{
+    element.getElementsByTagName('img')[0].src = songs[i].poster;
+    element.getElementsByTagName('h5')[0].innerHTML = songs[i].songName;
+})
+
+const music = new Audio('audio/1.mp3');  
+let masterPlay = document.getElementById('masterPlay');
+let wave = document.getElementsByClassName('wave')[0];
+
+masterPlay.addEventListener('click', ()=>{
+    if (music.paused || music.currentTime <=0) {
+        music.play();
+        masterPlay.classList.remove('bi-play');
+        masterPlay.classList.add('bi-pause');
+        wave.classList.add('active2');
+    } else {
+        music.pause();
+        masterPlay.classList.add('bi-play');
+        masterPlay.classList.remove('bi-pause');
+        wave.classList.remove('active2');
+    }
+})
+
+const makeAllPlays = () =>{
+Array.from(document.getElementsByClassName('playListPlay')).forEach((element)=>{
+        element.classList.add('bi-play-circle');
+        element.classList.remove('bi-pause-circle');
+    })
+}
+
+let index = 0;
+let poster_music_player = document.getElementById('poster_music_player');
+let title = document.getElementById('title');
+Array.from(document.getElementsByClassName('playListPlay')).forEach((element)=>{
+    element.addEventListener('click', (e)=>{
+        index = e.target.id;
+        makeAllPlays();
+        e.target.classList.remove('bi-play-circle');
+        e.target.classList.add('bi-pause-circle');
+        music.src = `audio/${index}.mp3`;
+        poster_music_player.src = `img/${index}.png`;
+        music.play();
+        let song_title = songs.filter((ele)=>{
+            return ele.id == index;
+        })
+
+        song_title.forEach(ele =>{
+            let {songName} = ele;
+            title.innerHTML = songName;
+        })
+        masterPlay.classList.remove('bi-play');
+        masterPlay.classList.add('bi-pause');
+        wave.classList.add('active2');
+        music.addEventListener('ended', ()=>{
+            masterPlay.classList.add('bi-play');
+            masterPlay.classList.remove('bi-pause');
+            wave.classList.remove('active2');
+        })
+        makeAllBackgrounds();
+        Array.from(document.getElementsByClassName('songItem'))[`${index-1}`]
+    })
+})
+
+let left_scroll = document.getElementById('left_scroll');
   let right_scroll = document.getElementById('right_scroll');
   let pop_song = document.getElementsByClassName('pop_song')[0];
   
@@ -99,24 +203,6 @@ fetch('db.json')
   right_scrolls.addEventListener('click', ()=>{
       item.scrollLeft += 330;
   });
-
-const music = new Audio('audio/3.mp3');  
-let masterPlay = document.getElementById('masterPlay');
-let wave = document.getElementsByClassName('wave')[0];
-
-masterPlay.addEventListener('click', ()=>{
-    if (music.paused || music.currentTime <=0) {
-        music.play();
-        masterPlay.classList.remove('bi-play');
-        masterPlay.classList.add('bi-pause');
-        wave.classList.add('active2');
-    } else {
-        music.pause();
-        masterPlay.classList.add('bi-play');
-        masterPlay.classList.remove('bi-pause');
-        wave.classList.remove('active2');
-    }
-})
 
 let currentStart = document.getElementById('currentStart');
 let currentEnd = document.getElementById('currentEnd');
@@ -208,8 +294,7 @@ back.addEventListener('click', ()=>{
     })
     makeAllPlays()
 
-    document.getElementById(`${indec}`).classList.remove('bi-play');
+    document.getElementById(`${index}`).classList.remove('bi-play');
     document.getElementById(`${index}`).classList.add('bi-pause');
-    makeAllBackgrounds();
-    
 })
+
