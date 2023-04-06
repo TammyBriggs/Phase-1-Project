@@ -1,4 +1,4 @@
-// Get the container element in which the song items will be appended
+// Get the container element in which the song items in the menu bar will be appended
 const songList = document.querySelector('.menu_song');
 
 // Fetch the data from the JSON file
@@ -27,7 +27,38 @@ fetch('db.json')
     });
   });
 
-  // Get the HTML element where we want to append the images and titles
+// Get the parent element to which we will append the song items to the popular songs div.
+const popSongDiv = document.querySelector('.pop_song');
+
+// Fetch the data from db.json
+fetch('db.json')
+  .then(response => response.json())
+  .then(data => {
+    // Iterate over the "pop-tracks" array and create a new list item for each track
+    data["pop-tracks"].forEach(track => {
+      // Create the new list item element
+      const newSongItem = document.createElement('li');
+      newSongItem.classList.add('songItem');
+
+      // Create the HTML markup for the song item
+      newSongItem.innerHTML = `
+        <div class="img_play">
+          <img src="${track.poster}" alt="">
+          <i class="bi playListPlay bi-play" id="${track.id}"></i>
+        </div>
+        <h5>${track.songName}<br>
+          <div class="subtitle">${track.artist}</div>
+        </h5>
+      `;
+
+      // Append the new song item to the parent element
+      popSongDiv.appendChild(newSongItem);
+    });
+  })
+  .catch(error => console.error(error));
+
+
+  // Get the HTML element where we want to append the images and titles to the popular artists div
 const artistList = document.getElementById('artist-list');
 
 // Fetch the data from the JSON file

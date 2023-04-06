@@ -35,57 +35,59 @@
         "songName": "Terminator",
         "artist": "Asake",
         "poster": "img/6.png"
-      }, 
+      }
+    ],
+      "pop-tracks":[ 
       {
-        "id": "7",
+        "id": "1",
         "songName": "Low Down",
         "artist": "Lil Baby",
         "poster": "img/7.png"
       },
       {
-        "id": "8",
+        "id": "2",
         "songName": "Koffee",
         "artist": "Toast",
         "poster": "img/8.png"
       },
       {
-        "id": "9",
+        "id": "3",
         "songName": "Drogba (Joanna)",
         "artist": "Afro B, Wizkid",
         "poster": "img/9.png"
       },
       {
-        "id": "10",
+        "id": "4",
         "songName": "Dimension",
         "artist": "JAE5, Skepta, Rema",
         "poster": "img/10.png"
       },
       {
-        "id": "11",
+        "id": "5",
         "songName": "Ye",
         "artist": "Burna Boy",
         "poster": "img/11.png"
       },
       {
-        "id": "12",
+        "id": "6",
         "songName": "Asiwaju",
         "artist": "Ruger",
         "poster": "img/12.png"
       },
       {
-        "id": "13",
+        "id": "7",
         "songName": "In Da Club",
         "artist": "50 Cent",
         "poster": "img/13.png"
       },
       {
-        "id": "14",
+        "id": "8",
         "songName": "soso",
         "artist": "Omah Lay",
         "poster": "img/14.png"
       },
       {
-        "id": "15",
+        "id": "9",
         "songName": "Feed The Fire",
         "artist": "SG Lewis, Lucky Daye",
         "poster": "img/15.png"
