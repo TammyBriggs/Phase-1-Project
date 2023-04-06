@@ -1,65 +1,4 @@
-// //1. To Display all the songs in the menu bar
-// // Get the container element in which the song items in the menu bar will be appended
-// const songList = document.querySelector('.menu_song');
-
-// // Fetch the data from the JSON file
-// fetch('db.json')
-//   .then(response => response.json())
-//   .then(data => {
-//     // Loop through the first 6 tracks and create a new song item for each track
-//     data["tracks"].forEach(track => {
-//       // Create a new li element for the song item
-//       const songItem = document.createElement('li');
-//       songItem.classList.add('songItem');
-
-//       // Create the HTML for the song item using the track data
-//       songItem.innerHTML = `
-//         <span>${track.id}</span>
-//         <img src="${track.poster}" alt="Poster of ${track.songName} track">
-//         <h5>
-//           ${track.songName}
-//           <div class="subtitle">${track.artist}</div>
-//         </h5>
-//         <i class="bi playListPlay bi-play" id="${track.id}"></i>
-//       `;
-
-//       // Append the new song item to the container
-//       songList.appendChild(songItem);
-//     });
-//   });
-
-// 2. To diplay all the songs in the Popular Songs div
-// Get the parent element to which we will append the song items to the popular songs div.
-const popSongDiv = document.querySelector('.pop_song');
-
-// Fetch the data from db.json
-fetch('db.json')
-  .then(response => response.json())
-  .then(data => {
-    // Iterate over the "pop-tracks" array and create a new list item for each track
-    data["pop-tracks"].forEach(track => {
-      // Create the new list item element
-      const newSongItem = document.createElement('li');
-      newSongItem.classList.add('songItem');
-
-      // Create the HTML markup for the song item
-      newSongItem.innerHTML = `
-        <div class="img_play">
-          <img src="${track.poster}" alt="">
-          <i class="bi playListPlay bi-play" id="${track.id}"></i>
-        </div>
-        <h5>${track.songName}<br>
-          <div class="subtitle">${track.artist}</div>
-        </h5>
-        `;
-
-      // Append the new song item to the parent element
-      popSongDiv.appendChild(newSongItem);
-    });
-  })
-  .catch(error => console.error(error));
-
-//3. To display the artists in the Popular Artists div
+//1. To display the artists in the Popular Artists div
   // Get the HTML element where we want to append the images and titles to the popular artists div
 const artistList = document.getElementById('artist-list');
 
@@ -116,7 +55,61 @@ fetch('db.json')
         songName:` Terminator <br>
         <div class = "subtitle">Asake</div>`,
         poster: 'img/6.png'
-      } 
+      },
+      {
+        id: '7',
+        songName:` Low Down <br>
+        <div class = "subtitle">Lil Baby</div>`,
+        poster: 'img/7.png'
+      }, 
+      {
+        id: '8',
+        songName:` Toast <br>
+        <div class = "subtitle">Koffee</div>`,
+        poster: 'img/8.png'
+      }, 
+      {
+        id: '9',
+        songName:` Drogba (Joanna) <br>
+        <div class = "subtitle">Afro B, Wizkid</div>`,
+        poster: 'img/9.png'
+      }, 
+      {
+        id: '10',
+        songName:` Dimension <br>
+        <div class = "subtitle">JAE5, Skepta, Rema</div>`,
+        poster: 'img/10.png'
+      }, 
+      {
+        id: '11',
+        songName:` Ye <br>
+        <div class = "subtitle">Burna Boy</div>`,
+        poster: 'img/11.png'
+      }, 
+      {
+        id: '12',
+        songName:` Asiwaju <br>
+        <div class = "subtitle">Ruger</div>`,
+        poster: 'img/12.png'
+      }, 
+      {
+        id: '13',
+        songName:` In Da Club <br>
+        <div class = "subtitle">50 Cent</div>`,
+        poster: 'img/13.png'
+      }, 
+      {
+        id: '14',
+        songName:` soso <br>
+        <div class = "subtitle">Omah Lay</div>`,
+        poster: 'img/14.png'
+      }, 
+      {
+        id: '15',
+        songName:` Feed The Fire <br>
+        <div class = "subtitle">SG Lewis, Lucky Daye</div>`,
+        poster: 'img/15.png'
+      }  
 ]
 
 Array.from(document.getElementsByClassName('songItem')).forEach((element, i)=>{
@@ -181,28 +174,6 @@ Array.from(document.getElementsByClassName('playListPlay')).forEach((element)=>{
         Array.from(document.getElementsByClassName('songItem'))[`${index-1}`]
     })
 })
-
-let left_scroll = document.getElementById('left_scroll');
-  let right_scroll = document.getElementById('right_scroll');
-  let pop_song = document.getElementsByClassName('pop_song')[0];
-  
-  left_scroll.addEventListener('click', ()=>{
-      pop_song.scrollLeft -= 330;
-  })
-  right_scroll.addEventListener('click', ()=>{
-      pop_song.scrollLeft += 330;
-  })
-  
-  let left_scrolls = document.getElementById('left_scrolls');
-  let right_scrolls = document.getElementById('right_scrolls');
-  let item = document.getElementsByClassName('item')[0];
-  
-  left_scrolls.addEventListener('click', ()=>{
-      item.scrollLeft -= 330;
-  })
-  right_scrolls.addEventListener('click', ()=>{
-      item.scrollLeft += 330;
-  });
 
 let currentStart = document.getElementById('currentStart');
 let currentEnd = document.getElementById('currentEnd');
@@ -274,7 +245,7 @@ vol.addEventListener('change', ()=>{
 })
 
 let back = document.getElementById('back');
-let next = document.getElementById('back');
+let next = document.getElementById('next');
 
 back.addEventListener('click', ()=>{
     index -= 1;
@@ -282,7 +253,7 @@ back.addEventListener('click', ()=>{
         index = Array.from(document.getElementsByClassName('songItem')).length;
     }
     music.src = `audio/${index}.mp3`;
-    poster_music_player.src = `img/${index}.jpg`;
+    poster_music_player.src = `img/${index}.png`;
     music.play();
     let song_title = songs.filter((ele)=>{
         return ele.id == index;
@@ -292,9 +263,50 @@ back.addEventListener('click', ()=>{
         let {songName} = ele;
         title.innerHTML = songName;
     })
-    makeAllPlays()
+    makeAllPlays();
+    document.getElementById(`${index}`).classList.remove('bi-play');
+    document.getElementById(`${index}`).classList.add('bi-pause');
+})
+next.addEventListener('click', ()=>{
+    index -= 0;
+    index += 1;
+    if (index > Array.from(document.getElementsByClassName('songItem')).length) {
+        index = 1;
+        }
+    music.src = `audio/${index}.mp3`;
+    poster_music_player.src = `img/${index}.png`;
+    music.play();
+    let song_title = songs.filter((ele)=>{
+        return ele.id == index;
+    })
 
+    song_title.forEach(ele => {
+        let {songName} = ele;
+        title.innerHTML = songName;
+    })
+    makeAllPlays();
     document.getElementById(`${index}`).classList.remove('bi-play');
     document.getElementById(`${index}`).classList.add('bi-pause');
 })
 
+let left_scroll = document.getElementById('left_scroll');
+  let right_scroll = document.getElementById('right_scroll');
+  let pop_song = document.getElementsByClassName('pop_song')[0];
+  
+  left_scroll.addEventListener('click', ()=>{
+      pop_song.scrollLeft -= 330;
+  })
+  right_scroll.addEventListener('click', ()=>{
+      pop_song.scrollLeft += 330;
+  })
+  
+  let left_scrolls = document.getElementById('left_scrolls');
+  let right_scrolls = document.getElementById('right_scrolls');
+  let item = document.getElementsByClassName('item')[0];
+  
+  left_scrolls.addEventListener('click', ()=>{
+      item.scrollLeft -= 330;
+  })
+  right_scrolls.addEventListener('click', ()=>{
+      item.scrollLeft += 330;
+  });
