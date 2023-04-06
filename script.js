@@ -6,7 +6,7 @@ fetch('db.json')
   .then(response => response.json())
   .then(data => {
     // Loop through the first 6 tracks and create a new song item for each track
-    data.tracks.slice(0, 6).forEach(track => {
+    data["tracks"].forEach(track => {
       // Create a new li element for the song item
       const songItem = document.createElement('li');
       songItem.classList.add('songItem');
@@ -78,39 +78,88 @@ fetch('db.json')
   })
   .catch(error => console.error(error));
 
-const music = new Audio('the-summoning.mp3');  
+  let left_scroll = document.getElementById('left_scroll');
+  let right_scroll = document.getElementById('right_scroll');
+  let pop_song = document.getElementsByClassName('pop_song')[0];
+  
+  left_scroll.addEventListener('click', ()=>{
+      pop_song.scrollLeft -= 330;
+  })
+  right_scroll.addEventListener('click', ()=>{
+      pop_song.scrollLeft += 330;
+  })
+  
+  let left_scrolls = document.getElementById('left_scrolls');
+  let right_scrolls = document.getElementById('right_scrolls');
+  let item = document.getElementsByClassName('item')[0];
+  
+  left_scrolls.addEventListener('click', ()=>{
+      item.scrollLeft -= 330;
+  })
+  right_scrolls.addEventListener('click', ()=>{
+      item.scrollLeft += 330;
+  });
+
+const music = new Audio('audio/3.mp3');  
 let masterPlay = document.getElementById('masterPlay');
+let wave = document.getElementsByClassName('wave')[0];
 
 masterPlay.addEventListener('click', ()=>{
     if (music.paused || music.currentTime <=0) {
         music.play();
         masterPlay.classList.remove('bi-play');
         masterPlay.classList.add('bi-pause');
+        wave.classList.add('active2');
     } else {
         music.pause();
         masterPlay.classList.add('bi-play');
         masterPlay.classList.remove('bi-pause');
+        wave.classList.remove('active2');
     }
 })
 
-let left_scroll = document.getElementById('left_scroll');
-let right_scroll = document.getElementById('right_scroll');
-let pop_song = document.getElementsByClassName('pop_song')[0];
+let currentStart = document.getElementById('currentStart');
+let currentEnd = document.getElementById('currentEnd');
+let seek = document.getElementById('seek');
+let bar2 = document.getElementById('bar2');
+let dot = document.getElementsByClassName('dot')[0];
 
-left_scroll.addEventListener('click', ()=>{
-    pop_song.scrollLeft -= 330;
-})
-right_scroll.addEventListener('click', ()=>{
-    pop_song.scrollLeft += 330;
+music.addEventListener('timeupdate', ()=>{
+    let music_curr = music.currentTime;
+    let music_dur = music.duration;
+
+    let min = Math.floor(music_dur/60);
+    let sec = Math.floor(music_dur%60);
+    if(sec < 10) {
+        sec = `0${sec}`
+    }
+    currentEnd.innerText = `${min}:${sec}`;
+
+    let min1 = Math.floor(music_curr/60);
+    let sec1 = Math.floor(music_curr%60);
+    if(sec1 < 10) {
+        sec1 = `0${sec1}`
+    }
+    currentStart.innerText = `${min1}:${sec1}`;
+
+    let progressbar = parseInt((music.currentTime/music.duration)*100);
+    seek.value = progressbar;
+    let seekbar = seek.value;
+    bar2.style.width = `${seekbar}%`;
+    dot.style.left = `${seekbar}%`
 })
 
-let left_scrolls = document.getElementById('left_scrolls');
-let right_scrolls = document.getElementById('right_scrolls');
-let item = document.getElementsByClassName('item')[0];
+seek.addEventListener('change', ()=>{
+    music.currentTime = seek.value * music.duration/100;
+})
 
-left_scrolls.addEventListener('click', ()=>{
-    item.scrollLeft -= 330;
+music.addEventListener('ended', ()=>{
+    masterPlay.classList.add('bi-play');
+    masterPlay.classList.remove('bi-pause');
+    wave.classList.remove('active2');
 })
-right_scrolls.addEventListener('click', ()=>{
-    item.scrollLeft += 330;
-})
+
+let vol_icon = document.getElementById('vol_icon');
+let vol = document.getElementById('vol');
+let vol_dot = document.getElementById('vol_dot');
+let vol_bar = document.getElementsByClassName('vol_bar')[0];
