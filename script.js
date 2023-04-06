@@ -186,3 +186,30 @@ vol.addEventListener('change', ()=>{
     vol_dot.style.left = `${vol_a}%`;
     music.volume = vol_a/100;
 })
+
+let back = document.getElementById('back');
+let next = document.getElementById('back');
+
+back.addEventListener('click', ()=>{
+    index -= 1;
+    if (index < 1) {
+        index = Array.from(document.getElementsByClassName('songItem')).length;
+    }
+    music.src = `audio/${index}.mp3`;
+    poster_music_player.src = `img/${index}.jpg`;
+    music.play();
+    let song_title = songs.filter((ele)=>{
+        return ele.id == index;
+    })
+
+    song_title.forEach(ele => {
+        let {songName} = ele;
+        title.innerHTML = songName;
+    })
+    makeAllPlays()
+
+    document.getElementById(`${indec}`).classList.remove('bi-play');
+    document.getElementById(`${index}`).classList.add('bi-pause');
+    makeAllBackgrounds();
+    
+})
