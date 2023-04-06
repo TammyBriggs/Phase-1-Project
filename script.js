@@ -77,3 +77,40 @@ fetch('db.json')
     });
   })
   .catch(error => console.error(error));
+
+const music = new Audio('the-summoning.mp3');  
+let masterPlay = document.getElementById('masterPlay');
+
+masterPlay.addEventListener('click', ()=>{
+    if (music.paused || music.currentTime <=0) {
+        music.play();
+        masterPlay.classList.remove('bi-play');
+        masterPlay.classList.add('bi-pause');
+    } else {
+        music.pause();
+        masterPlay.classList.add('bi-play');
+        masterPlay.classList.remove('bi-pause');
+    }
+})
+
+let left_scroll = document.getElementById('left_scroll');
+let right_scroll = document.getElementById('right_scroll');
+let pop_song = document.getElementsByClassName('pop_song')[0];
+
+left_scroll.addEventListener('click', ()=>{
+    pop_song.scrollLeft -= 330;
+})
+right_scroll.addEventListener('click', ()=>{
+    pop_song.scrollLeft += 330;
+})
+
+let left_scrolls = document.getElementById('left_scrolls');
+let right_scrolls = document.getElementById('right_scrolls');
+let item = document.getElementsByClassName('item')[0];
+
+left_scrolls.addEventListener('click', ()=>{
+    item.scrollLeft -= 330;
+})
+right_scrolls.addEventListener('click', ()=>{
+    item.scrollLeft += 330;
+})

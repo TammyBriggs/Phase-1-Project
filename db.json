@@ -143,6 +143,11 @@
             "id": "10",
             "image": "img/mj.png",
             "title": "Michael Jackson"
+        },
+        {
+            "id": "11",
+            "image": "img/celine.png",
+            "title": "Céline Dion"
         }
     ]
 }

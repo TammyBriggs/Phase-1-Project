@@ -17,7 +17,6 @@ body{
 header{
     width: 85%;
     height: 95%;
-    border: 1px solid black;
     display: flex;
     flex-wrap: wrap;
     overflow: hidden;
@@ -247,7 +246,7 @@ header .music_player .icon .bi{
 }
 
 header .music_player .icon .bi:nth-child(2){
-    border: 1px solid grey;
+    /* border: 1px solid grey; */
     border-radius: 50%;
     padding: 1px 3px 0px 6px;
     margin: 0px 5px;
