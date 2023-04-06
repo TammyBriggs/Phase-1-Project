@@ -163,3 +163,4 @@ let vol_icon = document.getElementById('vol_icon');
 let vol = document.getElementById('vol');
 let vol_dot = document.getElementById('vol_dot');
 let vol_bar = document.getElementsByClassName('vol_bar')[0];
+
