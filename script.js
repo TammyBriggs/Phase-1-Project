@@ -170,6 +170,7 @@ Array.from(document.getElementsByClassName('playListPlay')).forEach((element)=>{
             masterPlay.classList.remove('bi-pause');
             wave.classList.remove('active2');
         })
+        
         makeAllBackgrounds();
         Array.from(document.getElementsByClassName('songItem'))[`${index-1}`]
     })
