@@ -49,7 +49,7 @@ fetch('db.json')
         <h5>${track.songName}<br>
           <div class="subtitle">${track.artist}</div>
         </h5>
-      `;
+        `;
 
       // Append the new song item to the parent element
       popSongDiv.appendChild(newSongItem);
